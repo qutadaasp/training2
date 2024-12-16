@@ -9,22 +9,19 @@ When("Click on What's New",()=>{
 })
 
 Then("Open What's New Page",()=>{
-    let counter = 0
-    //cy.get(".categories-menu").get("ul.items li.item a")
-    cy.get(".categories-menu ul.items li.item").then((names)=>{
-    for(let i=0;i<names.length;i++){
+    let counter = 0;
+    
+    cy.get(".categories-menu ul.items li.item").then((categories) => {
         
-        if(counter<6){
-            counter++
-            cy.wrap(names[i]).invoke("text").then((productname)=>{
-                cy.log(productname)
-            })
+        for (let i = 0; i < categories.length; i++) {
+            if (counter < 6) {
+                counter++;
+                cy.wrap(categories[i]).invoke("text").then((categoryName) => {
+                        cy.log(categoryName); 
+                    });
+            }
         }
-            
-        
-      
-    }
-})
+    })
     cy.get(".page-title").contains("span","What's New")
 
 })
